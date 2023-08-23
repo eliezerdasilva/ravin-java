@@ -4,23 +4,39 @@ package br.com.devxlabs.ravin.entities;
 import java.sql.Timestamp;
 
 import br.com.devxlabs.ravin.enums.PreparationOrderStatus;
-
-public class Order {
-	
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+@Entity
+public class OrderDetail {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@OneToOne(cascade = CascadeType.ALL)
 	private Product product;
+	
 	private Timestamp requestDateTime;
 	private Timestamp startPreparationDateTime;
 	private Timestamp remindingPreparationTime;
+	@Enumerated(value=EnumType.STRING)
 	private PreparationOrderStatus preparationOrderStatus;
+	
 	private String comments;
+	@Column(nullable = false)
 	private int quantity;
 	
-	public Order() {
+	public OrderDetail() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Order(int id, Product product, Timestamp requestDateTime, Timestamp startPreparationDateTime,
+	public OrderDetail(int id, Product product, Timestamp requestDateTime, Timestamp startPreparationDateTime,
 			Timestamp remindingPreparationTime, PreparationOrderStatus preparationOrderStatus, String comments,
 			int quantity) {
 		super();

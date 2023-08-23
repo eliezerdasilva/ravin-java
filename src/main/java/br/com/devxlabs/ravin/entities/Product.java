@@ -5,30 +5,46 @@ import java.util.Date;
 import br.com.devxlabs.ravin.enums.ProductType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 
 @Entity
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(unique = true)
 	private String name;
+	@Column(nullable = false)
 	private String description;
+	@Column(unique = true,nullable = false)
 	private String code;
+	@Column(nullable = false)
 	private double costPrice;
+	@Column(nullable = false)
 	private double salePrice;
+	
 	private String preparationTime;
 	private String comments;	
+	@Column(nullable = false)
+	@Enumerated(value = EnumType.STRING)
 	private ProductType productType;
+	
+	@Column(nullable = false)
 	private boolean hasActive;
+	
+	@Column(updatable  = false)
 	private String createdBy;
+	@Column(updatable  = false)
 	private Date createdDate;
+
 	private String updatedBy;
+	
 	private Date updatedDate;
 	
 	public Product() {
