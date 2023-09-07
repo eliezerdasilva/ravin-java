@@ -1,26 +1,18 @@
-package br.com.devxlabs.ravin.entities;
+package br.com.devxlabs.ravin.models.dtos;
 
-import jakarta.persistence.Embeddable;
+import java.io.Serializable;
 
-@Embeddable
-public class Address {
-	
+public class AddressDTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private String state;
 	private String city;
 	private String street;
 	private String zipCode;
-	
-	public Address() {
-		super();
-	}
 
-	public Address(String state, String city, String street, String zipCode) {
-		super();
-		this.state = state;
-		this.city = city;
-		this.street = street;
-		this.zipCode = zipCode;
+	public AddressDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getState() {
@@ -54,6 +46,10 @@ public class Address {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "AddressDTO [state=" + state + ", city=" + city + ", street=" + street + ", zipCode=" + zipCode + "]";
+	}
+
 }

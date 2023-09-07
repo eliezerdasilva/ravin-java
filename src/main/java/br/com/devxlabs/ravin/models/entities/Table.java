@@ -1,4 +1,4 @@
-package br.com.devxlabs.ravin.entities;
+package br.com.devxlabs.ravin.models.entities;
 
 import java.util.Date;
 import java.util.List;
@@ -27,6 +27,7 @@ public class Table {
 	private Employee employee;
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "table")
+	
 	private List<Tab> tabs;
 	@Column(nullable = false,unique = true)
 	private String name;
